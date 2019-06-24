@@ -33,6 +33,7 @@ public class PersonService {
         person.setUser(optionalUser.get());
         personRepository.save(person);
         log.info("Saved person with id: {}", person.getId());
+        personDTO.setId(person.getId());
         return personDTO;
     }
 }

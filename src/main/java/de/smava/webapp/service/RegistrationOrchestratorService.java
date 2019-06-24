@@ -1,9 +1,6 @@
 package de.smava.webapp.service;
 
-import de.smava.webapp.model.LoanDTO;
-import de.smava.webapp.model.RegistrationRequestDTO;
-import de.smava.webapp.model.RegistrationResponseVO;
-import de.smava.webapp.model.UserDTO;
+import de.smava.webapp.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +18,8 @@ public class RegistrationOrchestratorService {
     public RegistrationResponseVO register(RegistrationRequestDTO registrationRequest) {
         log.info("Entering register: loan: {}", registrationRequest.getLoan());
         UserDTO userDTO = userService.create(registrationRequest.getUser());
-        personService.create(registrationRequest.getPerson(), userDTO);
+        PersonDTO personDTO = personService.create(registrationRequest.getPerson(), userDTO);
+        log.info("Person Saved: personDTO: {}", personDTO.getId());
         LoanDTO loanDTO = loanService.create(registrationRequest.getLoan(), userDTO);
         return new RegistrationResponseVO(userDTO.getId(), loanDTO.getId(), loanDTO.getStatus());
     }
