@@ -1,15 +1,9 @@
-package de.smava.homework.customer.entity;
+package de.smava.homework.loanapplications.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
-
 @Data
-@Entity
-@Table(name = "customer")
-public class CustomerEntity {
-
-    @Id
+public class CustomerClientDTO {
     private String id;
     private String userId;
     private String firstName;

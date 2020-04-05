@@ -1,10 +1,13 @@
 package de.smava.homework.customer.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-public class CustomerRequestDTO {
-    private Long userId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CustomerDTO {
+    private String id;
+    private String userId;
     private String firstName;
     private String lastName;
     private String email;

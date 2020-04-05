@@ -2,7 +2,7 @@
 
 
 CREATE TABLE IF NOT EXISTS `CUSTOMER` (
-	`id` int NOT NULL PRIMARY KEY,
+	`id` varchar(100) NOT NULL PRIMARY KEY,
 	`userId` varchar(100) not null,
 	`firstName` varchar(100) not null,
 	`lastName` varchar(100) not null,

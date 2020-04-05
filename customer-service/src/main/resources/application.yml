@@ -18,11 +18,15 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
 
     properties:
       hibernate.dialect: org.hibernate.dialect.H2Dialect
       hibernate.format-sql: true
     show-sql: true
+
 
   flyway:
     baseline-on-migrate: true

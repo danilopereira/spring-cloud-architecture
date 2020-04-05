@@ -2,6 +2,7 @@ package de.smava.homework.loanapplications.controller;
 
 import de.smava.homework.loanapplications.model.LoanApplicationsRequestDTO;
 import de.smava.homework.loanapplications.model.LoanApplicationsResponseDTO;
+import de.smava.homework.loanapplications.model.LoanIdDTO;
 import de.smava.homework.loanapplications.service.LoanApplicationsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.ws.Response;
 
 @Slf4j
 @RestController
@@ -22,7 +22,7 @@ public class LoanApplicationsController {
     private LoanApplicationsService loanApplicationsService;
 
     @PostMapping
-    public ResponseEntity<Long> createLoanApplication(LoanApplicationsRequestDTO loanRequestDTO){
+    public ResponseEntity<LoanIdDTO> createLoanApplication(LoanApplicationsRequestDTO loanRequestDTO){
         return ResponseEntity.ok(loanApplicationsService.createLoanApplication(loanRequestDTO));
     }
 

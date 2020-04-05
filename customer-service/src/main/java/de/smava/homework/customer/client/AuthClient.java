@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @FeignClient("${auth-service.name}")
 public interface AuthClient {
+
     @GetMapping("/api/users/{id}")
-    Optional<UserDTO> findById(@PathVariable Long id);
+    Optional<UserDTO> findById(@PathVariable String id);
 }

@@ -1,7 +1,6 @@
 package de.smava.homework.customer.controller;
 
-import de.smava.homework.customer.model.CustomerRequestDTO;
-import de.smava.homework.customer.model.CustomerResponseDTO;
+import de.smava.homework.customer.model.CustomerDTO;
 import de.smava.homework.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +17,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Long> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO){
-        return ResponseEntity.ok(customerService.createCustomer(customerRequestDTO));
+    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO){
+        return ResponseEntity.ok(customerService.createCustomer(customerDTO));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerResponseDTO> findByCustomerId(@PathVariable Long id){
+    public ResponseEntity<CustomerDTO> findByCustomerId(@PathVariable Long id){
         return ResponseEntity.ok(customerService.findByCustomerId(id));
     }
 }
