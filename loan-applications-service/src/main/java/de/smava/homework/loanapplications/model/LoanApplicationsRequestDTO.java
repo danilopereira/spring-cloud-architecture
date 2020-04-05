@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class LoanApplicationsRequestDTO {
     private String id;
-    private Long customerId;
+    private String customerId;
     private Double amount;
     private int duration;
 

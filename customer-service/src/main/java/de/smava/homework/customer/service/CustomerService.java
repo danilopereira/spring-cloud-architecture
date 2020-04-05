@@ -40,7 +40,7 @@ public class CustomerService {
         return customerResponse;
     }
 
-    public CustomerDTO findByCustomerId(Long id) {
+    public CustomerDTO findByCustomerId(String id) {
         final Optional<CustomerEntity> customerEntity = customerRepository.findById(id);
 
         if(!customerEntity.isPresent()){

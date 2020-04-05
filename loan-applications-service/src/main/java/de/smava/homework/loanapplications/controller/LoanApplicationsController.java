@@ -28,7 +28,7 @@ public class LoanApplicationsController {
 
     @GetMapping
     public ResponseEntity<LoanApplicationsResponseDTO> getLoanApplicationsByCustomerId(@RequestParam("customerId")
-                                                                                           @NotNull Long customerId){
+                                                                                           @NotNull String customerId){
         return ResponseEntity.ok(loanApplicationsService.getLoanApplicationsByCustomerId(customerId));
     }
 }

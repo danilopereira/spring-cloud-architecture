@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface CustomerClient {
 
     @GetMapping("/api/customers/{id}")
-    Optional<CustomerClientDTO> findById(@PathVariable Long id);
+    Optional<CustomerClientDTO> findById(@PathVariable String id);
 }

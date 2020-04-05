@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface LoanApplicationsRepository extends JpaRepository<LoanEntity, Long> {
+public interface LoanApplicationsRepository extends JpaRepository<LoanEntity, String> {
 
-    List<LoanEntity> findByCustomerId(Long customerId);
+    List<LoanEntity> findByCustomerId(String customerId);
 }

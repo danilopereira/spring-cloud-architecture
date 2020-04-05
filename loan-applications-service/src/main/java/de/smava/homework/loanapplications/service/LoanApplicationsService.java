@@ -42,7 +42,7 @@ public class LoanApplicationsService {
         return new LoanIdDTO(loanEntity.getId());
     }
 
-    public LoanApplicationsResponseDTO getLoanApplicationsByCustomerId(Long customerId) {
+    public LoanApplicationsResponseDTO getLoanApplicationsByCustomerId(String customerId) {
         final CustomerClientDTO customer = getCustomer(customerId);
 
         final List<LoanEntity> loans = loanApplicationsRepository.findByCustomerId(customerId);
@@ -68,7 +68,7 @@ public class LoanApplicationsService {
                 .build();
     }
 
-    private CustomerClientDTO getCustomer(Long customerId) {
+    private CustomerClientDTO getCustomer(String customerId) {
         final Optional<CustomerClientDTO> customer = customerClient.findById(customerId);
 
         if (!customer.isPresent()) {
