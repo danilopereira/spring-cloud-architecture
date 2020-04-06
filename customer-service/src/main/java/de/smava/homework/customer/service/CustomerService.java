@@ -9,7 +9,6 @@ import de.smava.homework.customer.model.UserDTO;
 import de.smava.homework.customer.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
