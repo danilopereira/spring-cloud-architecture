@@ -46,7 +46,7 @@ public class LoanApplicationsService {
         final CustomerClientDTO customer = getCustomer(customerId);
 
         final List<LoanEntity> loans = loanApplicationsRepository.findByCustomerId(customerId);
-        if(loans.isEmpty()){
+        if(loans == null || loans.isEmpty()){
             throw new LoanNotFoundException();
         }
 
