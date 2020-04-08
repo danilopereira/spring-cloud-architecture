@@ -12,17 +12,44 @@ eureka:
 spring:
   application:
     name: gateway
+  security:
+    oauth2:
+      client:
+        clientId: client
+        clientSecret: client
+        accessTokenUri: lb://auth/oauth/token
+        userAuthorizationUri: lb://auth/oauth/authorize
+      resource:
+        jwk:
+          key-set-uri: lb://auth/.well-known/jwks.json
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
-      routes: # these are samples
+      routes:
       - id: customer-service
         uri: lb://customer-service
         predicates:
-        - Path=/service/**
+        - Path=/api/customers/**
         filters:
-        - RewritePath=/customers/(?<path>.*), /$\{path}
+        - RewritePath=/(?<path>.*), /$\{path}
+
+      - id: auth
+        uri: lb://auth
+        predicates:
+        - Path=/**
+        filters:
+        - RewritePath=/(?<path>.*), /$\{path}
+
+      - id: loan-applications-service
+        uri: lb://loan-applications-service
+        predicates:
+        - Path=/api/loanapplications
+
+management:
+  security:
+    enabled: false
+
  
       

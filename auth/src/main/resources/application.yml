@@ -10,6 +10,11 @@ eureka:
 spring:
   application:
     name: auth
+  security:
+    oauth2:
+      client:
+        client-id: client
+        client-secret: secret
   h2:
     console:
       enabled: true

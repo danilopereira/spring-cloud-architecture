@@ -1,5 +1,6 @@
 package de.smava.homework.customer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -12,4 +13,6 @@ public class CustomerDTO {
     private String lastName;
     private String email;
     private String phone;
+    @JsonIgnore
+    private transient String token;
 }

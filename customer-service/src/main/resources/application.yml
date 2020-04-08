@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: customer-service
+  security:
+    oauth2:
+      client:
+        client-id: client
+        client-secret: secret
   h2:
     console:
       enabled: true
