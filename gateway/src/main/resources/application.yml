@@ -38,9 +38,17 @@ spring:
       - id: auth
         uri: lb://auth
         predicates:
-        - Path=/**
+        - Path=/api/users/**
         filters:
         - RewritePath=/(?<path>.*), /$\{path}
+
+      - id: auth-token
+        uri: lb://auth
+        predicates:
+        - Path=/oauth/token
+        filters:
+        - RewritePath=/(?<path>.*), /$\{path}
+
 
       - id: loan-applications-service
         uri: lb://loan-applications-service

@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface AuthClient {
 
     @GetMapping("/api/users/{id}")
-    Optional<UserDTO> findById(@PathVariable("id") String id, @RequestHeader("Authorization") String token);
+    Optional<UserDTO> findById(@PathVariable("id") String id);
 }

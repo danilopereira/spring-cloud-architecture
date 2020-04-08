@@ -1,5 +1,6 @@
 package de.smava.homework.loanapplications.config;
 
+import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -46,5 +47,10 @@ public class CommonSecurityConfig {
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore);
         return defaultTokenServices;
+    }
+
+    @Bean
+    public RequestInterceptor requestInterceptor(){
+        return new FeignClientInterceptor();
     }
 }

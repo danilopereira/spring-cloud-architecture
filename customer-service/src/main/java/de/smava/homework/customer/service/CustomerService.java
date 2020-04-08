@@ -25,7 +25,7 @@ public class CustomerService {
 
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
 
-        final Optional<UserDTO> user = authClient.findById(customerDTO.getUserId(), customerDTO.getToken());
+        final Optional<UserDTO> user = authClient.findById(customerDTO.getUserId());
 
         if(!user.isPresent()){
             log.error("User {} not found", customerDTO.getUserId());

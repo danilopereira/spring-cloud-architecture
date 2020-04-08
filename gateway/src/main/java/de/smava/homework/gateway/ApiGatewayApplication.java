@@ -20,11 +20,13 @@ public class ApiGatewayApplication {
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
+                .csrf().disable()
                 .authorizeExchange()
-                .pathMatchers(HttpMethod.POST, "/**").hasAuthority("SCOPE_write")
-                .pathMatchers(HttpMethod.GET, "/**").hasAuthority("SCOPE_read")
-                .pathMatchers(HttpMethod.PUT, "/**").hasAuthority("SCOPE_write")
-                .pathMatchers(HttpMethod.DELETE, "/**").hasAuthority("SCOPE_write")
+                .pathMatchers(HttpMethod.POST, "/api/**").hasAuthority("SCOPE_write")
+                .pathMatchers(HttpMethod.GET, "/api/**").hasAuthority("SCOPE_read")
+                .pathMatchers(HttpMethod.PUT, "/api/**").hasAuthority("SCOPE_write")
+                .pathMatchers(HttpMethod.DELETE, "/api/**").hasAuthority("SCOPE_write")
+                .pathMatchers(HttpMethod.POST, "/oauth/**").permitAll()
                 .anyExchange().authenticated()
                 .and()
                 .oauth2ResourceServer()

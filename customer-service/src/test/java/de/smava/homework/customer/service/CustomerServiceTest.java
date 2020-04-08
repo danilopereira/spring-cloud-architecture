@@ -41,7 +41,7 @@ public class CustomerServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        when(authClient.findById(anyString(), anyString())).thenReturn(mockUserDto());
+        when(authClient.findById(anyString())).thenReturn(mockUserDto());
         when(customerRepository.findById(anyString())).thenReturn(mockCustomerEntity());
     }
 
@@ -54,7 +54,7 @@ public class CustomerServiceTest {
 
     @Test(expected = UserNotFoundException.class)
     public void createCustomerUserNotFound() {
-        when(authClient.findById(anyString(), anyString())).thenReturn(Optional.empty());
+        when(authClient.findById(anyString())).thenReturn(Optional.empty());
         final CustomerDTO customer = customerService.createCustomer(mockCustomerDTO());
         assertNotNull(customer.getId());
         assertEquals(mockCustomerDTO().getEmail(), customer.getEmail());
