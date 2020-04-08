@@ -8,6 +8,5 @@ public class LoanApplicationsRequestDTO {
     private String customerId;
     private Double amount;
     private int duration;
-    private transient String token;
 
 }

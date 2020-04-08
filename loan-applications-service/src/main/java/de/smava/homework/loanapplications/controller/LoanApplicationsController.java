@@ -26,14 +26,13 @@ public class LoanApplicationsController {
     private final LoanApplicationsService loanApplicationsService;
 
     @PostMapping
-    public ResponseEntity<LoanIdDTO> createLoanApplication(@RequestBody LoanApplicationsRequestDTO loanRequestDTO, @RequestHeader("Authorization") String token) {
-        loanRequestDTO.setToken(token);
+    public ResponseEntity<LoanIdDTO> createLoanApplication(@RequestBody LoanApplicationsRequestDTO loanRequestDTO) {
         return ResponseEntity.ok(loanApplicationsService.createLoanApplication(loanRequestDTO));
     }
 
     @GetMapping
     public ResponseEntity<LoanApplicationsResponseDTO> getLoanApplicationsByCustomerId(@RequestParam("customerId")
-                                                                                       @NotNull String customerId, @RequestHeader("Authorization") String token) {
-        return ResponseEntity.ok(loanApplicationsService.getLoanApplicationsByCustomerId(customerId, token));
+                                                                                       @NotNull String customerId) {
+        return ResponseEntity.ok(loanApplicationsService.getLoanApplicationsByCustomerId(customerId));
     }
 }

@@ -31,7 +31,7 @@ public class LoanApplicationsService {
     private final CustomerClient customerClient;
 
     public LoanIdDTO createLoanApplication(LoanApplicationsRequestDTO loanDTO) {
-        getCustomer(loanDTO.getCustomerId(), loanDTO.getToken());
+        getCustomer(loanDTO.getCustomerId());
 
         loanDTO.setId(UUID.randomUUID().toString());
 
@@ -42,8 +42,8 @@ public class LoanApplicationsService {
         return new LoanIdDTO(loanEntity.getId());
     }
 
-    public LoanApplicationsResponseDTO getLoanApplicationsByCustomerId(String customerId, String token) {
-        final CustomerClientDTO customer = getCustomer(customerId, token);
+    public LoanApplicationsResponseDTO getLoanApplicationsByCustomerId(String customerId) {
+        final CustomerClientDTO customer = getCustomer(customerId);
 
         final List<LoanEntity> loans = loanApplicationsRepository.findByCustomerId(customerId);
         if(loans == null || loans.isEmpty()){
@@ -68,8 +68,8 @@ public class LoanApplicationsService {
                 .build();
     }
 
-    private CustomerClientDTO getCustomer(String customerId, String token) {
-        final Optional<CustomerClientDTO> customer = customerClient.findById(customerId, token);
+    private CustomerClientDTO getCustomer(String customerId) {
+        final Optional<CustomerClientDTO> customer = customerClient.findById(customerId);
 
         if (!customer.isPresent()) {
             throw new CustomerNotFoundException();
