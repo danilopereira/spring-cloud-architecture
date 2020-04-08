@@ -55,9 +55,7 @@ public class CustomerServiceTest {
     @Test(expected = UserNotFoundException.class)
     public void createCustomerUserNotFound() {
         when(authClient.findById(anyString())).thenReturn(Optional.empty());
-        final CustomerDTO customer = customerService.createCustomer(mockCustomerDTO());
-        assertNotNull(customer.getId());
-        assertEquals(mockCustomerDTO().getEmail(), customer.getEmail());
+        customerService.createCustomer(mockCustomerDTO());
     }
 
     @Test
@@ -69,8 +67,7 @@ public class CustomerServiceTest {
     @Test(expected = CustomerNotFoundException.class)
     public void findByCustomerIdNotFound() {
         when(customerRepository.findById(anyString())).thenReturn(Optional.empty());
-        final CustomerDTO customer = customerService.findByCustomerId(UUID.randomUUID().toString());
-        assertNotNull(customer.getId());
+        customerService.findByCustomerId(UUID.randomUUID().toString());
     }
 
     private Optional<UserDTO> mockUserDto() {
