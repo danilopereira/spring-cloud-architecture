@@ -64,10 +64,10 @@ curl --location --request POST 'localhost:9080/api/customers' \
 --header 'Authorization: Bearer {{access_token}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"userId": "1",
-	"firstName": "Jack",
-	"lastName": "Daniels",
-	"email": "jack@email.com",
+	"userId": "{{userId}",
+	"firstName": "Luke",
+	"lastName": "Skywalker",
+	"email": "starkiller@email.com",
 	"phone": "+49 176 4567890678"
 }'
 ```
@@ -75,7 +75,7 @@ curl --location --request POST 'localhost:9080/api/customers' \
 **Get customer by ID**
 
 ```shell script
-curl --location --request GET 'localhost:9080/api/customers/c29ab65a-f495-4f79-8f8a-519b35de3022' \
+curl --location --request GET 'localhost:9080/api/customers/{{customerId}}' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
 
@@ -86,7 +86,7 @@ curl --location --request POST 'localhost:9080/api/loanapplications' \
 --header 'Authorization: Bearer {{access_token}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"customerId": "c29ab65a-f495-4f79-8f8a-519b35de3022",
+	"customerId": "{{customerId}}",
 	"amount": 1000,
 	"duration": 12
 }'
