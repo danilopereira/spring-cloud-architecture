@@ -37,7 +37,9 @@ public class LoanApplicationsService {
 
         final LoanEntity loanEntity = new LoanEntity();
         BeanUtils.copyProperties(loanDTO, loanEntity);
+
         loanApplicationsRepository.save(loanEntity);
+        log.debug("Created loan application to the customer {}", loanDTO.getCustomerId());
 
         return new LoanIdDTO(loanEntity.getId());
     }
@@ -47,6 +49,7 @@ public class LoanApplicationsService {
 
         final List<LoanEntity> loans = loanApplicationsRepository.findByCustomerId(customerId);
         if(loans == null || loans.isEmpty()){
+            log.error("Don't exist loan applications to the customer {}", customer);
             throw new LoanNotFoundException();
         }
 
@@ -72,6 +75,7 @@ public class LoanApplicationsService {
         final Optional<CustomerClientDTO> customer = customerClient.findById(customerId);
 
         if (!customer.isPresent()) {
+            log.error("Customer {} not found!", customerId);
             throw new CustomerNotFoundException();
         }
 

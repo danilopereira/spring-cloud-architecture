@@ -25,11 +25,13 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO){
+        log.debug("Creating customer {}", customerDTO.toString());
         return ResponseEntity.ok(customerService.createCustomer(customerDTO));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDTO> findByCustomerId(@PathVariable("id") String id){
+        log.debug("Searching for customer {}", id);
         return ResponseEntity.ok(customerService.findByCustomerId(id));
     }
 }

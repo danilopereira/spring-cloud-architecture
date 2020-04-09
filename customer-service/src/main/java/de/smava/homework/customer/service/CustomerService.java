@@ -48,6 +48,8 @@ public class CustomerService {
             throw new CustomerNotFoundException();
         }
 
+        log.debug("Customer {} found", customerEntity.get().toString());
+
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customerEntity.get(), customerDTO);
         return customerDTO;

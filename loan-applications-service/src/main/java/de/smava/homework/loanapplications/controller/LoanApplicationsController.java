@@ -27,12 +27,14 @@ public class LoanApplicationsController {
 
     @PostMapping
     public ResponseEntity<LoanIdDTO> createLoanApplication(@RequestBody LoanApplicationsRequestDTO loanRequestDTO) {
+        log.debug("Create application loan to customer {}", loanRequestDTO.getCustomerId());
         return ResponseEntity.ok(loanApplicationsService.createLoanApplication(loanRequestDTO));
     }
 
     @GetMapping
     public ResponseEntity<LoanApplicationsResponseDTO> getLoanApplicationsByCustomerId(@RequestParam("customerId")
                                                                                        @NotNull String customerId) {
+        log.debug("Get Loan Applications to customer {}", customerId);
         return ResponseEntity.ok(loanApplicationsService.getLoanApplicationsByCustomerId(customerId));
     }
 }
