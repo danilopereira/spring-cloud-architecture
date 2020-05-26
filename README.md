@@ -1,5 +1,7 @@
 # Homework
-Homework 2.1
+A project with studies about microservices on the Spring Cloud Architecture.
+
+The business logic consists in: based on an existing user, create a customer and apply him/her to new loan service.
 
 ## Startup
 
