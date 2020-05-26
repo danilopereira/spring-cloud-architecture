@@ -99,4 +99,4 @@ curl --location --request GET 'localhost:9080/api/loanapplications?customerId={{
 --header 'Authorization: Bearer {{access_token}}' 
 ```
 
-or you can use the **Postman** collection attached to this project: *smava.postman_collection.json*. Just import and use it!
+or you can use the **Postman** collection attached to this project: *danilopereira.postman_collection.json*. Just import and use it!
